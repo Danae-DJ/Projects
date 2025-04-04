@@ -4,7 +4,7 @@ const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-image');
 const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-description');
-const closeModalBtn = document.getElementById('close-modal');
+const closeModalBtn = document.querySelector('#close-modal');
 
 // cards-images
 function displayImages(category = "all") {
@@ -43,7 +43,13 @@ filterButtons.forEach(btn => {
 
 // Close modal
 closeModalBtn.addEventListener('click', () => {
-  modal.classList.add('hidden');
+    modal.classList.add('hidden');
+});
+
+modal.addEventListener('click', (event) => {
+    if (!event.target.closest('.modal-content')) {
+        modal.classList.add('hidden');
+    }
 });
 
 // All images
